@@ -167,7 +167,7 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1543043675;
+        genesis.nTime = 1611148955;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 1382154;
 
@@ -203,11 +203,10 @@ public:
         nZerocoinStartHeight = INT_MAX;
         nZerocoinStartTime = INT_MAX;
 
-        vSeeds.push_back(CDNSSeedData("0", "209.250.249.135"));             // Primary DNS Seeder
-        vSeeds.push_back(CDNSSeedData("1", "199.247.12.207"));      // Secondary DNS Seeder
-        vSeeds.push_back(CDNSSeedData("2", "140.82.35.203"));     // Third DNS Seeder
+        vSeeds.push_back(CDNSSeedData("0", "45.76.43.185"));      // Primary Node Seeder
+        vSeeds.push_back(CDNSSeedData("1", "45.76.45.31"));      // Secondary Node Seeder
 
-        // https://en.bitcoin.it/wiki/List_of_address_prefixes
+         // https://en.bitcoin.it/wiki/List_of_address_prefixes
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 60);     // starts with R
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 63);     // starts with S
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 75);        // starts with X
@@ -321,7 +320,7 @@ public:
             genesis hash: 000002244385b8f9a32b98ab6b9eb0c0e30acfce4f76fb63fbd5b6ba3d4936cf
         */
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-        genesis.nTime = 1543043675;
+        genesis.nTime = 1611148955;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 601665;
 
@@ -411,7 +410,7 @@ public:
             nonce: 233847
             genesis hash: 000006ba3bf77872f9c4747ed7451309cfc89c85f6b74f19254868211162de4a
         */
-        genesis.nTime = 1543043675;
+        genesis.nTime = 1611148955;
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 233847;
 
