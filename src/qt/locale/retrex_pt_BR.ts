@@ -3564,8 +3564,8 @@ https://www.transifex.com/retrex-project/retrex-project-translations</translatio
         <translation>Todos os direitos reservados (C) 2015-%i aos Desenvolvedores do PIVX Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2018 The Retrex Core Developers</source>
-        <translation>Todos os direitos reservados (C) 2018 aos Desenvolvedores do Retrex Core</translation>
+        <source>Copyright (C) 2021 The Retrex Core Developers</source>
+        <translation>Todos os direitos reservados (C) 2021 aos Desenvolvedores do Retrex Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

@@ -3111,8 +3111,8 @@ https://www.transifex.com/retrex-project/retrex-project-translations</translatio
         <translation>Copyright (C) 2015-%i Разработчики PIVX Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2018 The Retrex Core Developers</source>
-        <translation>Copyright (C) 2018 Разработчики Retrex Core</translation>
+        <source>Copyright (C) 2021 The Retrex Core Developers</source>
+        <translation>Copyright (C) 2021 Разработчики Retrex Core</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

@@ -1,5 +1,5 @@
---- old/qtbase/src/plugins/platforms/windows/qwindowscontext.cpp	2018-02-08 10:24:48.000000000 -0800
-+++ new/qtbase/src/plugins/platforms/windows/qwindowscontext.cpp	2018-03-22 00:49:42.000000000 -0700
+--- old/qtbase/src/plugins/platforms/windows/qwindowscontext.cpp	2021-02-08 10:24:48.000000000 -0800
++++ new/qtbase/src/plugins/platforms/windows/qwindowscontext.cpp	2021-03-22 00:49:42.000000000 -0700
 @@ -83,7 +83,9 @@
  #include <stdlib.h>
  #include <stdio.h>

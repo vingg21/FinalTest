@@ -11,7 +11,7 @@
  **/
 
 // Copyright (c) 2017 The PIVX developers
-// Copyright (c) 2018 The Retrex developers
+// Copyright (c) 2021 The Retrex developers
 #include <stdexcept>
 #include <iostream>
 #include "Coin.h"

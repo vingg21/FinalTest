@@ -6449,7 +6449,7 @@ for example: alertnotify=echo %%s | mail -s &quot;Retrex Alert&quot; admin@foo.c
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2018 The Retrex Core Developers</source>
+        <source>Copyright (C) 2021 The Retrex Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

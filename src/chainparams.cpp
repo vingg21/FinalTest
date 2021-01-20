@@ -2,7 +2,7 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The Retrex developers
+// Copyright (c) 2021 The Retrex developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -103,10 +103,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0xb2;
-        pchMessageStart[1] = 0x15;
-        pchMessageStart[2] = 0x89;
-        pchMessageStart[3] = 0xc7;
+        pchMessageStart[0] = 0xa1;
+        pchMessageStart[1] = 0x28;
+        pchMessageStart[2] = 0x67;
+        pchMessageStart[3] = 0xb2;
         vAlertPubKey = ParseHex("047ff78a093ca911fbe3c7cd9b8b81976696d92e6ad3d987b00a4cc4841fe9689ed6902be9c6942ef77492d0531bf68cf2e53dc0ac683359f938a7a52a988ced8c");
         nDefaultPort = 22011;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // Retrex starting difficulty is 1 / 2^12
@@ -156,7 +156,7 @@ public:
             nonce: 308971
             genesis hash: 00000c392c066ec40b4138a3642ac7c7c3a0b157be45553ea1adcce4196c968d
         */
-        const char* pszTimestamp = "Retrex group of devs October 2018";
+        const char* pszTimestamp = "Retrex Born on January 2021 with devs love";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
@@ -171,6 +171,29 @@ public:
         genesis.nBits = 0x1e0ffff0;
         genesis.nNonce = 1382154;
 
+        if(genesis.GetHash() != uint256("0x"))
+                {
+                    printf("Searching for genesis block...\n");
+                    uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+                    while(uint256(genesis.GetHash()) > hashTarget)
+                    {
+                        ++genesis.nNonce;
+                        if (genesis.nNonce == 0)
+                        {
+                            printf("NONCE WRAPPED, incrementing time");
+                            std::cout << std::string("NONCE WRAPPED, incrementing time:\n");
+                            ++genesis.nTime;
+                        }
+                        if (genesis.nNonce % 10000 == 0)
+                        {
+                            printf("Mainnet: nonce %08u: hash = %s \n", genesis.nNonce, genesis.GetHash().ToString().c_str(), genesis.hashMerkleRoot.ToString().c_str());
+                        }
+                    }
+                    printf("block.nTime = %u \n", genesis.nTime);
+                    printf("block.nNonce = %u \n", genesis.nNonce);
+                    printf("block.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+                    printf("block.merklehash = %s\n", genesis.hashMerkleRoot.ToString().c_str());
+                }
 
         hashGenesisBlock = genesis.GetHash();
         assert(genesis.hashMerkleRoot == uint256("0x3b8e0965ed9e76e0daee789fc1191b8061f8a5cb65bff923c9df7dff8fd02ea4"));
@@ -185,7 +208,7 @@ public:
         vSeeds.push_back(CDNSSeedData("2", "140.82.35.203"));     // Third DNS Seeder
 
         // https://en.bitcoin.it/wiki/List_of_address_prefixes
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 51);     // starts with M
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 60);     // starts with R
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 63);     // starts with S
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 75);        // starts with X
 
@@ -197,10 +220,10 @@ public:
             prefixes "xpub" and "xprv" respectively).
         */
 
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x05)(0x89)(0xB7)(0x2C).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x03)(0x78)(0xAC)(0xB4).convert_to_container<std::vector<unsigned char> >();
         // 	BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x02)(0x0c)(0xb4).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x90)(0x03)(0x0b)(0xc1).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
@@ -254,10 +277,10 @@ public:
     {
         networkID = CBaseChainParams::TESTNET;
         strNetworkID = "test";
-        pchMessageStart[0] = 0xc2;
-        pchMessageStart[1] = 0x25;
-        pchMessageStart[2] = 0x90;
-        pchMessageStart[3] = 0x7d;
+        pchMessageStart[0] = 0xd2;
+        pchMessageStart[1] = 0x26;
+        pchMessageStart[2] = 0x50;
+        pchMessageStart[3] = 0x8d;
         vAlertPubKey = ParseHex("047ff78a093ca911fbe3c7cd9b8b81976696d92e6ad3d987b00a4cc4841fe9689ed6902be9c6942ef77492d0531bf68cf2e53dc0ac683359f938a7a52a988ced8c");
         nDefaultPort = 22013;
         nEnforceBlockUpgradeMajority = 51;
@@ -314,13 +337,13 @@ public:
         vSeeds.push_back(CDNSSeedData("retrex.tech", "testnet-seeds.retrex.tech"));             // Primary DNS Seeder
         vSeeds.push_back(CDNSSeedData("gig8.com", "testnet-seeds.retrex.gig8.com"));      // Secondary DNS Seeder
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 110); // Testnet retrex addresses start with 'm''
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 122); // Testnet retrex addresses start with 'r''
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 125);  // Testnet retrex script addresses start with 's'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 137);     // Testnet private keys start with 'x'
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x35)(0x87)(0xCF).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x35)(0x83)(0x94).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x07)(0x25)(0x87)(0xCA).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x01)(0x45)(0x63)(0x95).convert_to_container<std::vector<unsigned char> >();
         // Testnet retrex BIP44 coin type is '1' (All coin's testnet default)
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x10)(0x05).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x70)(0x00)(0x20)(0x02).convert_to_container<std::vector<unsigned char> >();
 
         convertSeed6(vFixedSeeds, pnSeed6_test, ARRAYLEN(pnSeed6_test));
 
@@ -356,10 +379,10 @@ public:
         networkID = CBaseChainParams::REGTEST;
         strNetworkID = "regtest";
         strNetworkID = "regtest";
-        pchMessageStart[0] = 0xb6;
-        pchMessageStart[1] = 0x4f;
-        pchMessageStart[2] = 0x87;
-        pchMessageStart[3] = 0xc6;
+        pchMessageStart[0] = 0xc6;
+        pchMessageStart[1] = 0x4e;
+        pchMessageStart[2] = 0x57;
+        pchMessageStart[3] = 0xa6;
         nSubsidyHalvingInterval = 150;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
